@@ -4,9 +4,21 @@ module.exports = app => {
 
   app.on('issues.opened', async context => {
     const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles"];
-    const body = context.payload.issue.body;
-    const issueComment = context.issue({ body: 'Queen Bey reigns' })
-    return context.github.issues.createComment(issueComment)
+    const issueBody = context.payload.issue.body;
+
+    const issueTitle = context.payload.issue.title;
+
+    const issue = issueBody + ' ' + issueTitle;
+
+    const containsArray = triggerWords.map(word => 
+      issue.toLowerCase().includes(word.toLowerCase())
+    );
+
+    if (containsArray.includes(true)) {
+      const issueComment = context.issue({ body: '![](https://media.giphy.com/media/n4WpP39mwWrmg/giphy.gif)' })
+      return context.github.issues.createComment(issueComment)
+    }
+
   })
 
   // For more information on building apps:
