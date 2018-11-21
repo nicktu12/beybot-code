@@ -21,6 +21,10 @@ module.exports = app => {
 
   })
 
+  app.on('pull_request.opened', async context => {
+    app.log('issa pr')
+  })
+
   // For more information on building apps:
   // https://probot.github.io/docs/
 
