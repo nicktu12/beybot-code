@@ -2,8 +2,11 @@ module.exports = app => {
   // Your code here
   app.log('Yay, the app was loaded!')
 
+  const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles"];
+
+  const beyonceGifs = [];
+
   app.on('issues.opened', async context => {
-    const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles"];
     const issueBody = context.payload.issue.body;
 
     const issueTitle = context.payload.issue.title;
@@ -22,7 +25,7 @@ module.exports = app => {
   })
 
   app.on('pull_request.opened', async context => {
-    app.log('issa pr')
+    app.log('suuuuuh;')
   })
 
   // For more information on building apps:
