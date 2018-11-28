@@ -1,10 +1,16 @@
 module.exports = app => {
   // Your code here
+  const fetch = require('node-fetch');
   app.log('Yay, the app was loaded!')
 
   const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles"];
 
-  const beyonceGifs = [];
+  const getBeyGif = () => {
+    return fetch(`https://api.giphy.com/v1/gifs/random?api_key=${process.env.GIPHY}&tag=beyonce&rating=PG-13`)
+      .then(response => response.json())
+      .then(json => json.data.id)
+      .catch(error => { app.log(error) });
+  }
 
   app.on('issues.opened', async context => {
     const issueBody = context.payload.issue.body;
@@ -18,7 +24,9 @@ module.exports = app => {
     );
 
     if (containsArray.includes(true)) {
-      const issueComment = context.issue({ body: '![](https://media.giphy.com/media/n4WpP39mwWrmg/giphy.gif)' })
+      const bey = await getBeyGif();
+      console.log(bey)
+      const issueComment = context.issue({ body: `![](https://media.giphy.com/media/${bey}/giphy.gif)` })
       return context.github.issues.createComment(issueComment)
     }
 
