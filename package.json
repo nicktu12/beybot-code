@@ -1,6 +1,6 @@
 {
   "name": "BeyBot",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A probot that worships Queen Beyoncé",
   "author": "Nick Teets <nickteets@gmail.com>",
   "license": "ISC",
@@ -20,6 +20,7 @@
     "test:watch": "jest --watch --notify --notifyMode=change --coverage"
   },
   "dependencies": {
+    "node-fetch": "^2.3.0",
     "probot": "^7.2.0"
   },
   "devDependencies": {
