@@ -2,7 +2,7 @@ module.exports = app => {
   const fetch = require('node-fetch');
   app.log('I got a hot sauce in my bag, swag');
 
-  const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles", "queen b", "qween"];
+  const triggerWords = ["Bey", "Beyonce", "Beyoncé", "Yonce", "Yoncé", "Mrs. Carter", "Mrs Carter", "JayZ", "Jay-Z", "Jay Z", "Sasha Fierce", "Destiny's Child", "Destinys Child", "Solange", "Knowles", "queen b", "qween", "carters", "Blue Ivy", "runi", "sir"];
 
   const triggered = (webhookType, context) => {
     const webhookTitle = context.payload[webhookType].title;
